@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "kubernetes lab.md",
+                "file": "labThree/kubernetes lab three.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 295.5
   },
   "right": {
     "id": "7742de9c68962416",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kubernetes lab.md",
+                "file": "labThree/kubernetes lab three.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "kubernetes lab.md",
+                "file": "labThree/kubernetes lab three.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kubernetes lab.md"
+                "file": "labThree/kubernetes lab three.md"
               }
             }
           }
@@ -146,21 +146,33 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5044757f25998b3f",
+  "active": "bc6f2fad6f6e3022",
   "lastOpenFiles": [
+    "Screenshot_20240910_173753.png",
+    "Screenshot_20240910_173009.png",
+    "Screenshot_20240910_172421.png",
+    "Screenshot_20240910_172238.png",
+    "labThree/frontend-deployment.yaml",
+    "Screenshot_20240910_171855.png",
+    "Screenshot_20240910_171510.png",
+    "Screenshot_20240910_171606.png",
+    "Screenshot_20240910_171307.png",
+    "Screenshot_20240910_170756-1.png",
+    "labTwo/kubernetes lab two.md",
+    "labThree/kubernetes lab three.md",
+    "labThree/my-first-deployment.yaml",
+    "labThree",
+    "labTwo/attachments/Screenshot_20240910_165242.png",
+    "labTwo/replicaset2.yaml",
+    "labTwo/attachments/Screenshot_20240910_163817.png",
+    "labTwo/attachments",
+    "labTwo/replicaset.yaml",
+    "labOne/kubernetes lab one.md",
+    "kubernetes lab two.md",
+    "labTwo",
     "attachments",
     "attachments/README.md",
     "kubernetes lab.md",
-    "attachments/Screenshot_20240910_141406.png",
-    "attachments/Screenshot_20240910_145531.png",
-    "attachments/Screenshot_20240910_145445.png",
-    "attachments/Screenshot_20240910_145308.png",
-    "attachments/Screenshot_20240910_145117.png",
-    "attachments/Screenshot_20240910_145003 1.png",
-    "attachments/Screenshot_20240910_145003.png",
-    "attachments/Screenshot_20240910_144821.png",
-    "attachments/Screenshot_20240910_144718.png",
-    "attachments/Screenshot_20240910_144610.png",
     "webapp.yaml",
     "nginx-pod.yaml"
   ]
