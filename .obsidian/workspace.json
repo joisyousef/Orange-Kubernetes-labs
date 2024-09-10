@@ -1,19 +1,19 @@
 {
   "main": {
-    "id": "873eb07d2f62ef71",
+    "id": "36d806d22277e600",
     "type": "split",
     "children": [
       {
-        "id": "d095249a9043efe4",
+        "id": "599465b78b0ec642",
         "type": "tabs",
         "children": [
           {
-            "id": "bc6f2fad6f6e3022",
+            "id": "95284a1468f7def0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "labThree/kubernetes lab three.md",
+                "file": "LabTwo/kubernetes lab two.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "3c07c779ef4274b5",
+    "id": "d3591754e8615421",
     "type": "split",
     "children": [
       {
-        "id": "e2862bbe7853d186",
+        "id": "4f8c65d9aba59c65",
         "type": "tabs",
         "children": [
           {
-            "id": "5044757f25998b3f",
+            "id": "81ac68a2cfa3f8c4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -43,49 +43,49 @@
             }
           },
           {
-            "id": "0c524d4f091d545a",
+            "id": "62cd904723cced1a",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          },
+          {
+            "id": "29350046728132e1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": false,
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
             }
-          },
-          {
-            "id": "cb7c68115d4a3e6f",
-            "type": "leaf",
-            "state": {
-              "type": "bookmarks",
-              "state": {}
-            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 295.5
+    "width": 225.5
   },
   "right": {
-    "id": "7742de9c68962416",
+    "id": "9f28e13130c944db",
     "type": "split",
     "children": [
       {
-        "id": "52ec7f147ca0c81d",
+        "id": "1bfc306f4fd22751",
         "type": "tabs",
         "children": [
           {
-            "id": "6c302b6c6876dbfb",
+            "id": "89660591802ed0cd",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "labThree/kubernetes lab three.md",
+                "file": "LabTwo/kubernetes lab two.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,19 +97,19 @@
             }
           },
           {
-            "id": "c56bb71b3414cbb4",
+            "id": "7c532cbd54c0aa68",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "labThree/kubernetes lab three.md",
+                "file": "LabTwo/kubernetes lab two.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "df899f9899fbeb49",
+            "id": "e9ba812687b93502",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -120,21 +120,61 @@
             }
           },
           {
-            "id": "6043322a09f6d583",
+            "id": "94169d3cac48791d",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "labThree/kubernetes lab three.md"
+                "file": "LabTwo/kubernetes lab two.md"
               }
             }
+          },
+          {
+            "id": "828698fe4d3d450d",
+            "type": "leaf",
+            "state": {
+              "type": "trello-plugin",
+              "state": {}
+            }
+          },
+          {
+            "id": "612f67ecea855a66",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "fb4aa54a02982dda",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "d970f38d2c21186c",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-chat-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "8b608d4980e7ce58",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 242.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -143,37 +183,73 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "markdown-importer:Open format converter": false,
+      "publish:Publish changes...": false,
+      "audio-recorder:Start/stop recording": false,
+      "obsidian-importer:Open Importer": false,
+      "obsidian-projects:Open projects": false,
+      "obsidian-to-notion:Share to notion": false,
+      "obsidian42-brat:BRAT": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-kanban:Create new board": false,
+      "smart-connections:Open: View Smart Connections": false,
+      "smart-connections:Open: Smart Chat Conversation": false
     }
   },
-  "active": "bc6f2fad6f6e3022",
+  "active": "95284a1468f7def0",
   "lastOpenFiles": [
-    "Screenshot_20240910_173753.png",
-    "Screenshot_20240910_173009.png",
-    "Screenshot_20240910_172421.png",
-    "Screenshot_20240910_172238.png",
-    "labThree/frontend-deployment.yaml",
-    "Screenshot_20240910_171855.png",
-    "Screenshot_20240910_171510.png",
-    "Screenshot_20240910_171606.png",
-    "Screenshot_20240910_171307.png",
-    "Screenshot_20240910_170756-1.png",
-    "labTwo/kubernetes lab two.md",
-    "labThree/kubernetes lab three.md",
-    "labThree/my-first-deployment.yaml",
-    "labThree",
-    "labTwo/attachments/Screenshot_20240910_165242.png",
-    "labTwo/replicaset2.yaml",
-    "labTwo/attachments/Screenshot_20240910_163817.png",
-    "labTwo/attachments",
-    "labTwo/replicaset.yaml",
-    "labOne/kubernetes lab one.md",
-    "kubernetes lab two.md",
-    "labTwo",
-    "attachments",
-    "attachments/README.md",
-    "kubernetes lab.md",
-    "webapp.yaml",
-    "nginx-pod.yaml"
+    "LabTwo/attachment/5a58952e7bc29f0a6ef97085abe44b16.png",
+    "LabTwo/kubernetes lab two.md",
+    "LabThree/my-first-deployment.yaml",
+    "LabThree/kubernetes lab three.md",
+    "LabThree/attachment/5493414c1cb7c38f9bfdf129105590a1.png",
+    "LabThree/attachment/6dbb361cacb366392e317b5a5afb2e12.png",
+    "LabThree/attachment/c7e1cf108f79f4513ccd5dfd680bbdb7.png",
+    "LabThree/attachment/483217df646f565662a0e6e7ba2d1496.png",
+    "LabThree/attachment/daaf8285d136a2928491a62a6679af29.png",
+    "LabThree/attachment/47b8ef33436674e83b1ae26dcd2c39fc.png",
+    "LabThree/attachment/d210c00d16dc5e6af279cb8a86119a49.png",
+    "LabThree/attachment/4d9d88536aa4c1c5a1c12c3d29242cdd.png",
+    "LabThree/attachment/1e5bb74591805b45bfb8263f6e98b2aa.png",
+    "LabThree/frontend-deployment.yaml",
+    "LabThree/attachment",
+    "LabThree",
+    "LabOne/kubernetes lab one.md",
+    "LabTwo/replicaset2.yaml",
+    "LabTwo/replicaset.yaml",
+    "LabTwo/attachment/5fbf16a9dcf9c5e9241621c39d7ddd89.png",
+    "LabTwo/attachment",
+    "LabTwo",
+    "LabOne/webapp.yaml",
+    "LabOne/README.md",
+    "LabOne/attachment",
+    "Notes/eMAPT/Android.md",
+    "Notes/github/With ssh.md",
+    "Notes/github/github.md",
+    "Notes/Bug Bounty Hunting/Bug Bounty Hunting & OSINT Resources.md",
+    "Notes/Bug Bounty Hunting/Bug Hunting/AUTHs.md",
+    "Session Layer.md",
+    "Notes/CBBH/XSS.md",
+    "Notes/eWPT/XSS.md",
+    "Notes/CBBH/Untitled.canvas",
+    "Notes/CBBH/Untitled Kanban.md",
+    "Notes/CBBH/JavaScript Deobfuscation.md",
+    "JavaScript Deobfuscation.md",
+    "Notes/Automation.md",
+    "Notes/Tryhackme/Web.md",
+    "Notes/Tryhackme/shell.md",
+    "Notes/Enumeration Windows/windows priv esc/Passwords and Port Forwarding (1)/Passwords and Port Forwarding (1).md",
+    "Notes/Tryhackme/Jr Penetration Tester.md",
+    "Notes/Tryhackme/metasploit.md",
+    "Notes/eJPT/nmap scanning/Evasion, Scan Performance & Output.md",
+    "Notes/eWPT/Web Proxies and Web Information Gathering.md",
+    "Notes/eWPT/BURP.md",
+    "Notes/Wireless Penetration Testing/Wireless Penetration Testing.md",
+    "Untitled.canvas",
+    "Untitled 1.canvas",
+    "Notion/Untitled.canvas",
+    "TemplateVault/04 - Tasks/My Ideas.canvas"
   ]
 }
