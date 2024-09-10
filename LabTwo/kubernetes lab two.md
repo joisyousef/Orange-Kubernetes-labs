@@ -40,11 +40,10 @@ is set to 4
 
 ```
 containers:
-		  - image: busybox777
+  - image: busybox777
 ```
 
 busybox777
-
 ### 4. How many PODs are READY in the new-replica-set?
 
 run
@@ -53,8 +52,8 @@ kubectl get replicasets
 ```
 ![](attachment/5a58952e7bc29f0a6ef97085abe44b16.png)
 answer: 0
-
 ### 5. Why do you think the PODs are not ready?
+
 run
 ```
 kubectl describe pod <pod-name>
