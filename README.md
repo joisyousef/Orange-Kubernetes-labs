@@ -1,4 +1,4 @@
-```
+
 # Kubernetes Resources: Limits and Requests
 
 This project contains YAML configuration examples to demonstrate how to set **limits** and **requests** for containers in a Kubernetes environment. These configurations help manage the resource consumption (CPU and memory) of containers, ensuring efficient resource allocation and preventing resource overconsumption.
@@ -101,4 +101,3 @@ kubectl describe pod webapp
 
 This project serves as a guide for understanding how to manage Kubernetes resources with limits and requests. Feel free to contribute or open issues for discussions!
 
-```
