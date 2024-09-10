@@ -146,20 +146,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bc6f2fad6f6e3022",
+  "active": "5044757f25998b3f",
   "lastOpenFiles": [
-    "README.md",
+    "attachments",
+    "attachments/README.md",
     "kubernetes lab.md",
-    "Screenshot_20240910_141406.png",
-    "Screenshot_20240910_145531.png",
-    "Screenshot_20240910_145445.png",
-    "Screenshot_20240910_145308.png",
-    "Screenshot_20240910_145117.png",
-    "Screenshot_20240910_145003 1.png",
-    "Screenshot_20240910_145003.png",
-    "Screenshot_20240910_144821.png",
-    "Screenshot_20240910_144718.png",
-    "Screenshot_20240910_144610.png",
+    "attachments/Screenshot_20240910_141406.png",
+    "attachments/Screenshot_20240910_145531.png",
+    "attachments/Screenshot_20240910_145445.png",
+    "attachments/Screenshot_20240910_145308.png",
+    "attachments/Screenshot_20240910_145117.png",
+    "attachments/Screenshot_20240910_145003 1.png",
+    "attachments/Screenshot_20240910_145003.png",
+    "attachments/Screenshot_20240910_144821.png",
+    "attachments/Screenshot_20240910_144718.png",
+    "attachments/Screenshot_20240910_144610.png",
     "webapp.yaml",
     "nginx-pod.yaml"
   ]
