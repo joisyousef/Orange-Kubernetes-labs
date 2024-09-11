@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: old-web
+  labels:
+    app: old-web
+spec:
+  containers:
+  - name: old-web-container
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: api-pod
+  labels:
+    app: api
+spec:
+  containers:
+  - name: api-container
+    image: nginx:latest
+    ports:
+    - containerPort: 80

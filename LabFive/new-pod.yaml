@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: new-web
+  labels:
+    app: new-web
+spec:
+  containers:
+  - name: api-container
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+
+
+
