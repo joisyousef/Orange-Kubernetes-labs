@@ -104,7 +104,7 @@ Then configure Nginx for HTTPS
 
 To configure Nginx to use SSL, we need to update the Nginx configuration file. Create a custom Nginx configuration file that listens on both ports 80 and 443.
 
-![](d5ed3f285c7cb00fdc6da67f34524640.png)
+		![](d5ed3f285c7cb00fdc6da67f34524640.png)
 
 To include this configuration in your Kubernetes deployment, mount it as a ConfigMap.
 
