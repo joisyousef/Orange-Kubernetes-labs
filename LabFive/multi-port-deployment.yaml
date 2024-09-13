@@ -17,6 +17,12 @@ spec:
       - name: nginx-container
         image: nginx:latest
         ports:
-        - containerPort: 80 # HTTP port
-        - containerPort: 443 # HTTPS port
-
+        - containerPort: 80
+        - containerPort: 443
+        volumeMounts:
+        - name: nginx-config-volume
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: nginx-config-volume
+        configMap:
+          name: nginx-config

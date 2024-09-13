@@ -50,7 +50,7 @@ backend.yaml
 ![](f701aea83f51c57c21d912ed135c83cb.png)
 `kubectl apply -f backend-pod.yaml`
 `kubectl apply -f backend.yaml`
-		`minikube service backend-nodeport --url`
+						`minikube service backend-nodeport --url`
 and the service is exposed on 
 http://192.168.39.62:30001
 ![](7b0f5553790a8dba229533f6d93ad6e3.png)
@@ -81,32 +81,31 @@ Now, the IP address of the `new-web-pod` should appear. The service will no long
 
 ### 11. **Configure a Service for Multiple Ports**
 
-Create the yaml file
-![](d3a126ad3c0b5423b0dbd2b94e84a7d2.png)
+1. **Create a Kubernetes Deployment for Your App**
+		the code in multi-port-deployment.yaml
 
-Then create a Kubernetes Secret for SSL Certificates
+2. **Create a ConfigMap to Configure Nginx for HTTP/HTTPS**
+		the code in configMap.yaml
 
-To run Nginx over HTTPS, you need to generate an SSL certificate. Use OpenSSL to generate a self-signed certificate.
-`openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=localhost"`
+3. **Create a Kubernetes Service to Expose Multiple Ports**
+		the code in multi-port-service.yaml
 
-Create a Kubernetes secret to store the certificate:
-`kubectl create secret tls ssl-secret --key tls.key --cert tls.crt`
+4. Create SSL Certificates
 
-![](7d06dfea9320b12534a7c31de51d733a.png)
-it created two files public key and private key
- 
-Then create the Service for Multiple Ports
+`openssl req -x509 -nodes -days 365 -newkey rsa:2048 \   -keyout nginx.key \   -out nginx.crt \   -subj "/CN=localhost"`
+After generating the SSL certificates, mount into the Nginx container using a Kubernetes secret or mounted from a hostPath.
 
-Create a file named `multi-port-service.yaml` to define a service exposing both ports 80 and 443:
-![](5c515010ddae057d1b83735e39647ec6.png)
+5. Create a Kubernetes Secret to Store SSL Certificates
+		the code in nginx-ssl.yaml
 
-Then configure Nginx for HTTPS
+then apply the files and 
 
-To configure Nginx to use SSL, we need to update the Nginx configuration file. Create a custom Nginx configuration file that listens on both ports 80 and 443.
+Since `ClusterIP` type services are only accessible within the cluster, you can use `kubectl port-forward` to access the service from your local machine:
+```sh
+kubectl port-forward svc/multi-port-service 8080:80
+kubectl port-forward svc/multi-port-service 8443:443
+```
+You can then access the service locally at `http://localhost:8080` for HTTP and `https://localhost:8443` for HTTPS.
 
-		![](d5ed3f285c7cb00fdc6da67f34524640.png)
-
-To include this configuration in your Kubernetes deployment, mount it as a ConfigMap.
-
-`kubectl create configmap nginx-config --from-file=nginx.conf`
-created
+Test HTTP and HTTPS
+![[Screenshot_20240913_142639.png]]
