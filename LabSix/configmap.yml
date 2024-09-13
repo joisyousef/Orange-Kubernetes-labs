@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  config.txt: |
+    key1=value1
+    key2=value2
+    key3=value3
+

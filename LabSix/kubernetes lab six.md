@@ -187,3 +187,115 @@ In Kubernetes, **PersistentVolumes (PVs)** and **PersistentVolumeClaims (PVCs)**
 - **Binding**: Kubernetes binds a PVC to an appropriate PV, making storage available to Pods.
 
 This approach provides flexibility in managing storage and ensures that applications can request and use storage without needing to understand the details of the underlying infrastructure.
+
+
+4- Create a Pod with an emptyDir volume:
+Write a YAML definition for a Pod that uses an emptyDir volume to share data between two containers within the Pod. Deploy the Pod and verify that the data is shared.
+
+YAML file: empty-dir-pod.yml
+- **Container A**: Writes a file `hello.txt` to the `/data` directory (mounted using the `emptyDir` volume).
+- **Container B**: Reads the file `hello.txt` written by Container A from the shared `/data` directory.
+
+![](dcb06affdcf4ca56ac7e42c77e0a5360.png)Container B should print out the contents of the `hello.txt` file written by Container A, confirming that the `emptyDir` volume is working and sharing data between the containers.
+
+### 5- Set up a Pod with a hostPath volume:
+Define a Pod that mounts a hostPath volume to access files from the host node’s file system. Deploy the Pod and verify that it can read/write to the specified directory on the host.
+
+YAML file: host-path-pod.yml
+
+- **hostPath Volume**: The `hostPath` volume mounts a directory from the host node into the Pod.
+    
+- **Containers**:
+    
+    - **busybox-container**: This container writes a file called `hello.txt` into the `/host-data` directory, which is mapped to `/data/host-directory` on the host.
+- **hostPath Configuration**:
+    
+    - `path`: The path on the host node where the files are accessed (`/data/host-directory`).
+    - `type`: `DirectoryOrCreate` ensures the directory is created if it does not exist.
+- **volumeMounts**: The `hostPath` volume is mounted at `/data` inside the container.
+
+
+- **Check the Directory on the Host**: Go to the `/data/host-directory` on the host node to verify that the `hello.txt` file has been created by the container.
+on container:
+![](b2088ced779e518b627d90698d3f8be5.png)
+
+
+### 6- Deploy a PersistentVolume (PV) and PersistentVolumeClaim (PVC):
+Create a YAML file to define a PersistentVolume of 5Gi with ReadWriteOnce access mode. Then, create a PersistentVolumeClaim requesting 2Gi of storage from this PV. Deploy both resources and verify the PVC is bound to the PV.
+
+created two YAML files:
+
+1. **PersistentVolume (PV)**: This defines a 5Gi volume that will be available for claims.
+	pv.yml
+2. **PersistentVolumeClaim (PVC)**: This requests 2Gi of storage from the available PV.
+	pvc.yml
+then apply:
+![](5f12f9107505856e77e5c7db9b357f42.png)
+see the `STATUS` of the PVC as `Bound`, which indicates that the claim has been successfully bound to the PersistentVolume.
+
+
+### 7- Create a Pod that uses a PVC:
+Write a YAML definition for a Pod that uses the PVC created in Exercise 3. Mount the PVC to a specific path inside the container and test that the storage is accessible.
+
+Define the Pod with the PVC
+Created a file called `pod-with-pvc.yaml`
+
+then apply the pod
+Once the Pod is running, you can test that the PVC storage is accessible by accessing the `nginx` container and writing a file to the mounted path.
+
+to Test the Storage Access
+
+1. Open a terminal session inside the running Pod:
+    `kubectl exec -it pvc-pod -- /bin/sh`
+    
+2. Navigate to the mounted volume inside the container:    
+    `cd /usr/share/nginx/html`
+    
+3. Create a test file to verify the storage:
+    `echo "Hello from PVC storage!" > test-file.html`
+    
+4. Exit the Pod:
+    `exit`
+    
+5. Verify the file was successfully written to the PersistentVolumeClaim
+
+Using kubectl port-forward:
+
+`kubectl port-forward pvc-pod 8080:80`
+then got to `http://localhost:8080/test-file.html`
+![](6504f0e6ae05280592e222f4e92a631a.png)
+
+### 8- Dynamic Provisioning of Persistent Volumes: Create a StorageClass that uses a dynamic provisioner (e.g., AWS EBS, GCE Persistent Disk, or NFS). 
+Deploy a PVC that requests storage dynamically using this StorageClass. Verify that the storage is dynamically provisioned.
+
+**Create a StorageClass**
+
+Create a file named `storageclass.yaml`
+This `StorageClass` uses AWS EBS (Elastic Block Store) with `gp2` volume type. You can adjust the `provisioner` and `parameters` based on your environment (e.g., use `kubernetes.io/gce-pd` for Google Cloud, `nfs` for NFS, etc.).
+
+**Create a PersistentVolumeClaim**
+
+Create a file named `pvc-dynamic.yaml`
+This `PVC` requests 2Gi of storage and uses the `StorageClass` defined earlier.
+
+Apply the configurations to Kubernetes cluster
+
+**Verify Dynamic Provisioning**
+
+1. **Check the PVC Status**:
+    `kubectl get pvc dynamic-pvc`
+    You should see the `STATUS` as `Bound`, which indicates that the `PVC` has been successfully bound to a dynamically provisioned `PV`.
+    
+2. **Check the PV**:
+    `kubectl get pv`
+    Look for a `PersistentVolume` with `STORAGECLASS` set to `ebs-storage-class` and ensure that the `STATUS` is `Bound`.
+    
+3. **Describe the PVC**:
+    `kubectl describe pvc dynamic-pvc`
+
+![](3a73378530aa8d87719d0c316dd256d5.png)
+all status are bound! and working.
+
+### 9- Use a configMap as a Volume:
+Create a ConfigMap with some configuration data. Write a Pod YAML definition that mounts this ConfigMap as a volume and verify the data is correctly mounted and accessible inside the container.
+				
