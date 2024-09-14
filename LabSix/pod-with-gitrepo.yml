@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: git-clone-pod
+spec:
+  initContainers:
+  - name: git-clone
+    image: alpine/git # Git image in an init container
+    command:
+    - git
+    - clone
+    - https://github.com/jlord/hello
+    - /git-data # Target directory for cloned data
+    volumeMounts:
+    - name: git-volume
+      mountPath: /git-data # Mounting the emptyDir volume
+  containers:
+  - name: app-container
+    image: nginx # The main app container
+    volumeMounts:
+    - name: git-volume
+      mountPath: /usr/share/nginx/html # Volume with cloned repo data
+  volumes:
+  - name: git-volume
+    emptyDir: {}

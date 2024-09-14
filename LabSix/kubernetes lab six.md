@@ -298,4 +298,90 @@ all status are bound! and working.
 
 ### 9- Use a configMap as a Volume:
 Create a ConfigMap with some configuration data. Write a Pod YAML definition that mounts this ConfigMap as a volume and verify the data is correctly mounted and accessible inside the container.
-				
+
+1. Create a ConfigMap –> configmap.yml
+     In this `ConfigMap`:
+
+- `metadata.name` specifies the name of the `ConfigMap`.
+- `data` contains the configuration data. The file `config.txt` will have multiple key-value pairs.
+
+2. Create a Pod definition that mounts the `ConfigMap` as a volume 
+     –> pod-configmap-test.yml
+
+In this Pod configuration:
+
+- `volumeMounts` specifies that the `ConfigMap` will be mounted to `/etc/config` inside the container.
+- `volumes` section specifies that the volume is of type `configMap` and names the `ConfigMap` as `app-config`.
+
+then apply the configuration files and access the pod 
+You should see the contents of `config.txt` from the `ConfigMap`:
+![[Screenshot_20240914_223808.png]]
+
+
+### 10- Create a Pod with a secret as a Volume:
+Define a Kubernetes Secret containing sensitive data. Create a Pod that mounts this secret as a volume and verify the data is correctly mounted and accessible inside the container in a secure way.
+
+Create the Secret
+![[Screenshot_20240914_225344.png]]
+
+Create the Pod with Secret Volume
+![[Pasted image 20240914230117.png]]
+You should see the original (decoded) values of `my-username` and `my-password` in the corresponding files.
+![[Screenshot_20240914_225209.png]]
+success!
+
+### 11- Set up a Pod with a gitRepo volume:
+Write a YAML definition for a Pod that uses a gitRepo volume to clone a Git repository into the container. Verify that the repository's contents are available inside the container.
+
+Using Init Containers for Git Cloning create the yaml file:
+
+![[Pasted image 20240914231317.png]]
+
+apply the file then access it using exec
+
+You should see the contents of the Git repository in that directory. For example, the `index.html` file from the `hello` repository should be visible if cloned successfully:
+![[Screenshot_20240914_231219.png]]
+success!
+
+### 12- Resize a Persistent Volume Claim (PVC):
+Create a PVC and bind it to a Pod. After deployment, resize the PVC to request more storage (assuming the underlying storage provider supports resizing). Verify that the PVC has been resized successfully.
+
+Create a Persistent Volume Claim (PVC)
+![[Screenshot_20240915_002349.png]]
+
+then bind PVC to a Pod
+![[Pasted image 20240915002447.png]]
+apply the files
+
+then Resize the PVC
+modify the PVC YAML to request more storage, from `2Gi` to `5Gi`. Edit the PVC manifest as follows:
+![[Pasted image 20240915002554.png]]
+
+then Create a Matching PersistentVolume
+![[Pasted image 20240915002620.png]]
+After creating the PV, the PVC automatically bind to it.
+![[Screenshot_20240915_002902.png]]
+
+![[Pasted image 20240915002236.png]]
+
+### 13- Use subPath for mounting volumes:
+Create a Pod with a single volume and use the subPath feature to mount different subdirectories of that volume to different paths within a container. Verify that each path in the container corresponds to the correct subdirectory on the volume.
+
+Create the YAML Definition for the Pod
+![[Pasted image 20240915004526.png]]
+- **Volume**: `shared-volume` is an `emptyDir` volume that is shared between the containers.
+- **subPath**: The `subPath` specifies that only a subdirectory (e.g., `dir1`, `dir2`) of the volume will be mounted to a specific path in the container.
+    - `/mnt/dir1` will correspond to the `dir1` subdirectory.
+    - `/mnt/dir2` will correspond to the `dir2` subdirectory.
+
+This configuration means that inside the container:
+
+- `/mnt/dir1` will map to `dir1` in the volume.
+- `/mnt/dir2` will map to `dir2` in the volume.
+
+apply the file then access the container
+
+If everything is working correctly, `/mnt/dir1` and `/mnt/dir2` should be different directories inside the container, each mapped to the appropriate subdirectory of the volume.
+
+![[attachment/Pasted image 20240915004745.png]]
+Done
