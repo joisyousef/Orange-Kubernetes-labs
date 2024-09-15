@@ -186,3 +186,194 @@ rules:
 ```
 
 This will restrict the user to managing only `deployments` within the `apps` API group, ensuring they cannot modify other resources or API groups.>)
+
+Here are the requested YAML definitions and commands:
+
+---
+
+### 16. **ClusterRole to Allow Listing All Pods in Any Namespace**
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: pod-list-clusterrole
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["list"]
+```
+
+---
+
+### 17. **Role to Allow Creating, Updating, and Deleting Deployments in the `dev` Namespace**
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: dev
+  name: deployment-manager
+rules:
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["create", "update", "delete"]
+```
+
+---
+
+### 18. **RoleBinding to Assign the `view` Role to User `john` in the `testing` Namespace**
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: view-rolebinding
+  namespace: testing
+subjects:
+- kind: User
+  name: "john"
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: view
+  apiGroup: rbac.authorization.k8s.io
+```
+
+---
+
+### 19. **ClusterRoleBinding to Grant the `edit` Role to ServiceAccount `developer` in All Namespaces**
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: edit-clusterrolebinding
+subjects:
+- kind: ServiceAccount
+  name: developer
+  namespace: default
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: edit
+  apiGroup: rbac.authorization.k8s.io
+```
+
+---
+
+### 20. **Command to Check if `alice` Has Permission to Delete Pods in the `production` Namespace**
+
+```bash
+kubectl auth can-i delete pods --namespace=production --as=alice
+```
+
+---
+
+### 21. **Role for Pod Executor in the `ci-cd` Namespace and RoleBinding for ServiceAccount `pipeline-sa`**
+
+**Role:**
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: ci-cd
+  name: pod-executor
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["create", "list", "exec"]
+```
+
+**RoleBinding:**
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-executor-binding
+  namespace: ci-cd
+subjects:
+- kind: ServiceAccount
+  name: pipeline-sa
+  namespace: ci-cd
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pod-executor
+  apiGroup: rbac.authorization.k8s.io
+```
+
+---
+
+### 22. **Role for PersistentVolumeClaims Access in the `storage` Namespace and RoleBinding for ServiceAccount `storage-admin`**
+
+**Role:**
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: storage
+  name: persistent-volume-access
+rules:
+- apiGroups: [""]
+  resources: ["persistentvolumeclaims"]
+  verbs: ["create", "delete"]
+```
+
+**RoleBinding:**
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pvc-access-binding
+  namespace: storage
+subjects:
+- kind: ServiceAccount
+  name: storage-admin
+  namespace: storage
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: persistent-volume-access
+  apiGroup: rbac.authorization.k8s.io
+```
+
+---
+
+### 23. **ClusterRole with Read-Only Access to All Resources Across the Cluster and ClusterRoleBinding for User `alice`**
+
+**ClusterRole:**
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: readonly-cluster
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs: ["get", "list", "watch"]
+```
+
+**ClusterRoleBinding:**
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: readonly-clusterrolebinding
+subjects:
+- kind: User
+  name: alice
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: readonly-cluster
+  apiGroup: rbac.authorization.k8s.io
+```
+
+---
